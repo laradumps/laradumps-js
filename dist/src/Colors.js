@@ -19,6 +19,9 @@ exports.default = {
     },
     danger: function () {
         return this.color("red");
+    },
+    dark: function () {
+        return this.color("black");
     }
 };
 //# sourceMappingURL=Colors.js.map

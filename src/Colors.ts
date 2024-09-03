@@ -31,5 +31,9 @@ export default {
 
     danger(): _LaraDumps {
         return this.color("red");
+    },
+
+    dark(): _LaraDumps {
+        return this.color("black");
     }
 } as _Colors;

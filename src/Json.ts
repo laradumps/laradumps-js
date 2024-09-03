@@ -1,0 +1,47 @@
+import { _LaraDumps } from "./LaraDumps";
+
+export type _Json = {
+    json(json: any): _LaraDumps;
+}
+
+export default {
+    json(json: any): _LaraDumps {
+        try {
+            if(typeof(json) !== "string") {
+                json = JSON.stringify(json);
+            }
+
+            if(!this.isValidJson(json)) {
+                this.dump(json);
+            } else {
+                this.sendJson(json);
+            }
+        } catch (error) {
+            console.warn('Laradumps: Json is not valid', json);
+            return this;
+        }
+    },
+
+    isValidJson(json: any): boolean {
+        try {
+            JSON.parse(json);
+        } catch (e) {
+            return false;
+        }
+
+        return true;
+    },
+
+    sendJson(json: any): _LaraDumps {
+        json = typeof(json) !== 'string'
+            ? JSON.stringify(json)
+            : json;
+
+        return this.send("json", {
+            "json": {
+                "string": json,
+                "original_content": json
+            }
+        });
+    },
+} as _Json
