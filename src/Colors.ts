@@ -18,19 +18,35 @@ export default {
     },
     
     info(): _LaraDumps {
-        return this.color("blue");
+        return this.blue();
     },
 
     success(): _LaraDumps {
-        return this.color("green");
+        return this.green();
     },
 
     warning(): _LaraDumps {
-        return this.color("orange");
+        return this.orange();
     },
 
     danger(): _LaraDumps {
+        return this.red();
+    },
+
+    red(): _LaraDumps {
         return this.color("red");
+    },
+
+    blue(): _LaraDumps {
+        return this.color("blue");
+    },
+
+    green(): _LaraDumps {
+        return this.color("green");
+    },
+
+    orange(): _LaraDumps {
+        return this.color("orange");
     },
 
     dark(): _LaraDumps {

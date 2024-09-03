@@ -15,5 +15,14 @@ export default {
                 label
             }
         }).label(label);
+    },
+
+    tableV2(data: any[], label: string): _LaraDumps {
+        return this.send("table_v2", {
+            "table_v2": {
+                label,
+                values: data
+            }
+        }).label(label);
     }
 } as _Table

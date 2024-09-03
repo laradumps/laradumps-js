@@ -11,6 +11,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var Benchmark_1 = require("./Benchmark");
 var Colors_1 = require("./Colors");
 var Json_1 = require("./Json");
 var Label_1 = require("./Label");
@@ -18,11 +19,11 @@ var Screen_1 = require("./Screen");
 var Table_1 = require("./Table");
 var TimeTrack_1 = require("./TimeTrack");
 var Validate_1 = require("./Validate");
-var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({ instanceId: null, requestId: null, server: "http://127.0.0.1:9191/api/dumps", params: [], generateIds: function () {
+var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({ instanceId: null, requestId: null, server: "http://127.0.0.1:9191/api/dumps", params: [], generateIds: function () {
         this.instanceId = crypto.randomUUID();
         this.requestId = crypto.randomUUID();
         return this;
-    } }, Colors_1.default), Screen_1.default), Label_1.default), TimeTrack_1.default), Table_1.default), Json_1.default), Validate_1.default), { clear: function () {
+    } }, Colors_1.default), Screen_1.default), Label_1.default), TimeTrack_1.default), Table_1.default), Json_1.default), Validate_1.default), Benchmark_1.default), { clear: function () {
         return this.send("clear", {
             "clear": {}
         });

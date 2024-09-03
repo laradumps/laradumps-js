@@ -11,6 +11,14 @@ exports.default = {
                 label: label
             }
         }).label(label);
+    },
+    tableV2: function (data, label) {
+        return this.send("table_v2", {
+            "table_v2": {
+                label: label,
+                values: data
+            }
+        }).label(label);
     }
 };
 //# sourceMappingURL=Table.js.map

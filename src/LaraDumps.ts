@@ -1,3 +1,4 @@
+import Benchmark from './Benchmark';
 import Colors, { _Colors } from './Colors';
 import Json from './Json';
 import Label, { _Label } from './Label';
@@ -43,6 +44,7 @@ const LaraDumps: _LaraDumps = {
     ...Table,
     ...Json,
     ...Validate,
+    ...Benchmark,
 
     clear(): _LaraDumps {
         return this.send("clear", {

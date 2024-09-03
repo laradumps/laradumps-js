@@ -9,16 +9,28 @@ exports.default = {
         });
     },
     info: function () {
-        return this.color("blue");
+        return this.blue();
     },
     success: function () {
-        return this.color("green");
+        return this.green();
     },
     warning: function () {
-        return this.color("orange");
+        return this.orange();
     },
     danger: function () {
+        return this.red();
+    },
+    red: function () {
         return this.color("red");
+    },
+    blue: function () {
+        return this.color("blue");
+    },
+    green: function () {
+        return this.color("green");
+    },
+    orange: function () {
+        return this.color("orange");
     },
     dark: function () {
         return this.color("black");
