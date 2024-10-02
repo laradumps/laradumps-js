@@ -1,8 +1,4 @@
-import { _LaraDumps } from "./LaraDumps";
-
-export type _Label = {
-    label(label: string): _LaraDumps;
-}
+import { _Label, _LaraDumps } from "../types";
 
 export default {
     label(label: string): _LaraDumps {
@@ -12,4 +8,4 @@ export default {
             }
         });
     }
-}
+} as _Label

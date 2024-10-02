@@ -1,12 +1,4 @@
-import { _LaraDumps } from "./LaraDumps";
-
-export type _Colors = {
-    color(color: string): _LaraDumps;
-    info(): _LaraDumps;
-    success(): _LaraDumps;
-    warning(): _LaraDumps;
-    danger(): _LaraDumps;
-}
+import { _Colors, _LaraDumps } from "../types";
 
 export default {
     color(color: string): _LaraDumps {

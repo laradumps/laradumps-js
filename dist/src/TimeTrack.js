@@ -4,7 +4,7 @@ exports.default = {
     time: function (label) {
         return this.send("time_track", {
             "time_track": {
-                tracker_id: crypto.randomUUID(),
+                tracker_id: this.makeUUID(),
                 time: Date.now() / 1000,
                 label: label
             }
@@ -17,7 +17,7 @@ exports.default = {
                 time: time,
                 label: label,
                 end_time: time,
-                tracker_id: crypto.randomUUID()
+                tracker_id: this.makeUUID()
             }
         });
     }

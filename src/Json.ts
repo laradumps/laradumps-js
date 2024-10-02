@@ -1,8 +1,4 @@
-import { _LaraDumps } from "./LaraDumps";
-
-export type _Json = {
-    json(json: any): _LaraDumps;
-}
+import { _Json, _LaraDumps } from "../types";
 
 export default {
     json(json: any): _LaraDumps {
@@ -44,4 +40,4 @@ export default {
             }
         });
     },
-} as _Json
+} as _Json;

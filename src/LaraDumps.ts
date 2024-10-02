@@ -1,27 +1,13 @@
+import axios from 'axios';
 import Benchmark from './Benchmark';
-import Colors, { _Colors } from './Colors';
+import Colors from './Colors';
 import Json from './Json';
-import Label, { _Label } from './Label';
-import Screen, { _Screen } from './Screen';
+import Label from './Label';
+import Screen from './Screen';
 import Table from './Table';
-import TimeTrack, { _TimeTrack } from './TimeTrack';
+import TimeTrack from './TimeTrack';
 import Validate from './Validate';
-
-export type _LaraDumps = {
-    instanceId: string | null;
-    requestId: string | null;
-
-    server: string;
-    params: any[];
-
-    die(): void;
-    clear(): _LaraDumps;
-    generateIds(): _LaraDumps;
-    json(json: any): _LaraDumps;
-    dump(param: any): _LaraDumps;
-    label(label: string): _LaraDumps;
-    send(type: string, data: object): _LaraDumps;
-};
+import { _LaraDumps } from '../types';
 
 const LaraDumps: _LaraDumps = {
     instanceId: null,
@@ -31,10 +17,20 @@ const LaraDumps: _LaraDumps = {
     params: [],
 
     generateIds(): _LaraDumps {
-        this.instanceId = crypto.randomUUID();
-        this.requestId = crypto.randomUUID();
+        this.instanceId = this.makeUUID();
+        this.requestId = this.makeUUID();
 
         return this;
+    },
+
+    makeUUID(): string {
+        let d = new Date().getTime();
+
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            const r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
     },
 
     ...Colors,
@@ -69,7 +65,7 @@ const LaraDumps: _LaraDumps = {
 
         const isValidJson = type === 'string' && this.isValidJson(param);
 
-        if((type === "object" && param.prototype === undefined) || isValidJson) {
+        if((type === "object" && param?.prototype === undefined) || isValidJson) {
             this.json(param);
             return;
         } else if (type === "object") {
@@ -87,24 +83,60 @@ const LaraDumps: _LaraDumps = {
     },
 
     send(type: string, data: object): _LaraDumps {
-        fetch(this.server, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
+        const trace = this.getStackTrace();
+        const url = trace.file ? new URL(trace.file) : null;
+
+        axios.post(this.server, {
+            "id": this.instanceId,
+            "request_id": this.requestId,
+            "meta":{
+                "laradumps_version": "2.0.2.0",
+                "auto_invoke_app": false
             },
-            body: JSON.stringify({
-                "id": this.instanceId,
-                "request_id": this.requestId,
-                "meta":{
-                    "laradumps_version": "2.0.2.0",
-                    "auto_invoke_app": false
-                },
-                "type": type,
-                ...data
-            }),
+            "ide_handle": {
+                "separator": "/",
+                "line": trace?.line,
+                "real_path": url?.pathname ?? "terminal",
+                "class_name": url?.pathname.split('/').pop() ?? "terminal",
+                "project_path": url?.pathname.split('/').slice(0, -1).join('/') ?? "terminal",
+            },
+            "type": type,
+            ...data
+        }).catch((error) => {
+            console.error("Erro ao enviar o dump.:", error);
         });
 
         return this;
+    },
+
+    getStackTrace(): object {
+        let stack: string = new Error().stack;
+        let track: any = {stack};
+
+        let stackLines: string[] = stack.split("\n");
+        let callerLine: string = stackLines[4];
+
+        const hasAtDs = stackLines.findIndex(line => line.includes('at ds'));
+        
+        if(stack.includes('[Alpine]')) {
+            stackLines = stackLines.filter(line => line.includes('[Alpine]'));
+            callerLine = stackLines[0]?.split('),')[0];
+        } else if(hasAtDs) {
+            stackLines = stackLines.slice(hasAtDs);
+            callerLine = stackLines[1]?.split('),')[0];
+        }
+
+        const match = callerLine?.match(/(https?:\/\/.*):(\d+):(\d+)/);
+        
+        if (match) {
+            const [_, file, line, column] = match;
+
+            track.file = file;
+            track.line = line;
+            track.column = column;
+        }
+
+        return track;
     }
 };
 

@@ -1,4 +1,4 @@
-import { _LaraDumps } from "./LaraDumps";
+import { _LaraDumps } from "../types";
 
 export default {
     benchmark(...params): _LaraDumps {

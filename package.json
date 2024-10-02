@@ -1,12 +1,14 @@
 {
   "name": "laradumps-js",
   "version": "0.1.0",
-  "main": "src/index.js",
+  "main": "index.js",
+  "types": "index.d.ts",
   "repository": "git@github.com:laradumps/laradumps-js.git",
   "author": "Hecktor viegas <hecktor@devsquad.com>",
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "axios": "^1.7.7",
     "ts-loader": "^9.5.1",
     "typescript": "^5.5.4"
   },

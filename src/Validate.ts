@@ -1,9 +1,4 @@
-import { validate } from "webpack";
-import { _LaraDumps } from "./LaraDumps";
-
-export type _Validate = {
-    isJson(): _LaraDumps;
-}
+import { _LaraDumps, _Validate } from "../types";
 
 export default {
     isJson(): _LaraDumps {
@@ -31,4 +26,4 @@ export default {
     contains(content: string, caseSensitive: boolean = false, wholeWord: boolean = false): _LaraDumps {
         return this.validate('contains', content, caseSensitive, wholeWord);
     }
-}
+} as _Validate;

@@ -6,9 +6,15 @@
     "sourceMap": true,
     "outDir": "./dist",    
     "allowJs": true,
-    "downlevelIteration": true
+    "jsx": "react",
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
   },
-  "include": ["./src/**/*", "index.js"],
+  "include": [
+    "./src/**/*", 
+    "index.js"
+  ],
   "exclude": [
     "node_modules"
   ]

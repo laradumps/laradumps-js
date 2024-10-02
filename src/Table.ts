@@ -1,8 +1,4 @@
-import { _LaraDumps } from "./LaraDumps";
-
-export type _Table = {
-    table(values: any[], label: string): _LaraDumps;
-}
+import { _LaraDumps, _Table } from "../types";
 
 export default {
     table(values: any[], label: string): _LaraDumps {
@@ -25,4 +21,4 @@ export default {
             }
         }).label(label);
     }
-} as _Table
+} as _Table;

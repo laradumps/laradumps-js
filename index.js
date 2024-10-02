@@ -1,11 +1,19 @@
-import LaraDumps, { _LaraDumps } from "./src/LaraDumps";
+import LaraDumps from "./src/LaraDumps";
 
-globalThis.ds = (...params) => {
-    const instance = LaraDumps.generateIds();
+export function ds(...params) {
+    const instance = {...LaraDumps}.generateIds();
     
     params.forEach((param) => instance.dump(param));
 
     return instance;
 };
 
-globalThis.dsd = (...params) => ds(...params).die();
+export function dsq(...params) {
+    return ds(...params).die();
+};
+
+export default LaraDumps;
+
+globalThis.ds = ds;
+globalThis.dsd = dsq;
+globalThis.LaraDumps = LaraDumps;
