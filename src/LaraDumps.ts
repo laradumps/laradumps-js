@@ -61,7 +61,7 @@ const LaraDumps: _LaraDumps = {
     },
 
     dump(param: any): _LaraDumps {
-        let type = typeof(param);
+        const type = typeof(param);
 
         const isValidJson = type === 'string' && this.isValidJson(param);
 
@@ -110,8 +110,8 @@ const LaraDumps: _LaraDumps = {
     },
 
     getStackTrace(): object {
-        let stack: string = new Error().stack;
-        let track: any = {stack};
+        const stack: string = new Error().stack;
+        const track: any = {stack};
 
         let stackLines: string[] = stack.split("\n");
         let callerLine: string = stackLines[4];
