@@ -4,6 +4,10 @@ exports.default = {
     s: function (screenName) {
         return this.toScreen(screenName);
     },
+    w: function (screenName, screenRaisenIn) {
+        if (screenRaisenIn === void 0) { screenRaisenIn = 0; }
+        return this.toScreen(screenName, screenRaisenIn);
+    },
     toScreen: function (screenName, screenRaisenIn, newWindow) {
         if (screenRaisenIn === void 0) { screenRaisenIn = 0; }
         if (newWindow === void 0) { newWindow = false; }

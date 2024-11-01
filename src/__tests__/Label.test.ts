@@ -1,4 +1,4 @@
-const {default: Label} = require("./Label");
+const {default: Label} = require("../Label");
 
 describe('Label', () => {
     it('should be able to send label', () => {

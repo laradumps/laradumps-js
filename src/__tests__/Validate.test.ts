@@ -1,4 +1,4 @@
-const {default: _Validate} = require("./Validate");
+const {default: _Validate} = require("../Validate");
 
 describe('Validate', () => {
     it('should be able to send json validate', () => {

@@ -1,4 +1,4 @@
-const {default: Colors} = require("./Colors");
+const {default: Colors} = require("../Colors");
 
 describe('Color Tag', () => {
     it.each([

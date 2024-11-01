@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
+    promise: null,
     benchmark: function () {
         var _this = this;
         var params = [];
@@ -47,7 +48,7 @@ exports.default = {
         var data = typeof (params[0]) === 'object'
             ? params[0]
             : params;
-        Promise.all(Object.values(data).map(function (param, index) {
+        this.promise = Promise.all(Object.values(data).map(function (param, index) {
             var label = Object.keys(data)[index];
             marks[label] = {
                 start_time: Date.now(),
@@ -67,7 +68,7 @@ exports.default = {
                 marks[label].end_time = Date.now();
                 marks[label].total_time = marks[label].end_time - marks[label].start_time;
             });
-        })).finally(function () {
+        })).then(function () { return marks; }).finally(function () {
             _this.sendMarks(marks);
         });
         return this;
@@ -89,7 +90,7 @@ exports.default = {
                 ];
             }
             dataMarks[label] = [
-                "Start time: ".concat(new Date(mark.start_time).toLocaleString(), "\n                    End time: ").concat(new Date(mark.end_time).toLocaleString(), "\n                    Total time: ").concat(mark.total_time, " ms"),
+                "Start time: ".concat(new Date(mark.start_time).toLocaleString(), "\n                End time: ").concat(new Date(mark.end_time).toLocaleString(), "\n                Total time: ").concat(mark.total_time, " ms"),
                 mark.end_time
             ];
         });

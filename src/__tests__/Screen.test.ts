@@ -1,4 +1,4 @@
-const {default: _Screen} = require("./Screen");
+const {default: _Screen} = require("../Screen");
 
 describe('Screen', () => {
     it.each([

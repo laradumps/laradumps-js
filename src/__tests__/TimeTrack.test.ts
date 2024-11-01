@@ -1,4 +1,4 @@
-const {default: TimeTrack} = require("./TimeTrack");
+const {default: TimeTrack} = require("../TimeTrack");
 
 describe('TimeTrack', () => {
     TimeTrack.makeUUID = jest.fn().mockReturnValue("test");

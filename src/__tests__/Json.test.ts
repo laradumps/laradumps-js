@@ -1,4 +1,4 @@
-const {default: Json} = require("./Json");
+const {default: Json} = require("../Json");
 
 describe('Json', () => {
     it('should be able to send json', () => {

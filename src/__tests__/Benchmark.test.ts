@@ -1,4 +1,4 @@
-const {default: Benchmark} = require("./Benchmark");
+const {default: Benchmark} = require("../Benchmark");
 
 describe('Benchmark', () => {
     it('should be able to send marks', async () => {

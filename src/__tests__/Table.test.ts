@@ -1,4 +1,4 @@
-const {default: Table} = require("./Table");
+const {default: Table} = require("../Table");
 
 describe.only('Table', () => {
     const users = [

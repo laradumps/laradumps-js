@@ -1,4 +1,4 @@
-const {default: LaraDumps} = require("./LaraDumps");
+const {default: LaraDumps} = require("../LaraDumps");
 
 describe('LaraDumps', () => {
     it('should be able to send clear', () => {
