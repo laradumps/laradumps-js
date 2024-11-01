@@ -34,6 +34,7 @@ export interface _TimeTrack {
 
 export interface _Screen {
     s(screenName: string): _LaraDumps;
+    w(screenName: string, screenRaisenIn: number): _LaraDumps;
     toScreen(screenName: string, screenRaisenIn: number): _LaraDumps;
     toScreenWindow(screenName: string, screenRaisenIn: number): _LaraDumps
 }
