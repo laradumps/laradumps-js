@@ -1,9 +1,8 @@
 {
   "name": "laradumps-js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "index.js",
   "types": "index.d.ts",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/laradumps/laradumps-js.git"
@@ -20,9 +19,6 @@
     "minify": "uglifyjs dist/index.js -c -m -o dist/laradumps.min.js",
     "build": "npx tsc && webpack && yarn minify",
     "test": "jest --passWithNoTests"
-  },
-  "bin": {
-    "laradumps-js": "./dist/index.js"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
