@@ -39,12 +39,12 @@ export interface _Screen {
     toScreenWindow(screenName: string, screenRaisenIn: number): _LaraDumps
 }
 
-export type _Benchmark = {
+export interface _Benchmark extends _TimeTrack {
     benchmark(...params): _LaraDumps;
     sendMarks(marks: any[]): _LaraDumps;
-} & _TimeTrack;
+}
 
-export type _LaraDumps = {
+export interface _LaraDumps extends _Benchmark, _Colors, _Screen, _Label, _Table, _Validate {
     instanceId: string | null;
     requestId: string | null;
 
@@ -61,4 +61,4 @@ export type _LaraDumps = {
     dump(param: any): _LaraDumps;
     label(label: string): _LaraDumps;
     send(type: string, data: object): _LaraDumps;
-} & _Benchmark & _Colors & _Screen & _Label & _Table & _Validate;
+}
