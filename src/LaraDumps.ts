@@ -13,7 +13,7 @@ const LaraDumps: _LaraDumps = {
     instanceId: null,
     requestId: null,
 
-    server: "http://127.0.0.1:9191/api/dumps",
+    server: `http://127.0.0.1:9191/api/dumps`,
     params: [],
 
     generateIds(): _LaraDumps {
@@ -91,7 +91,7 @@ const LaraDumps: _LaraDumps = {
             "request_id": this.requestId,
             "meta":{
                 "laradumps_version": "2.0.2.0",
-                "auto_invoke_app": false
+                "auto_invoke_app": globalThis.CONFIG_LARADUMPS?.autoInvokeApp
             },
             "ide_handle": {
                 "separator": "/",
