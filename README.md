@@ -5,17 +5,17 @@
 
 <div align="center">
   <p align="center">
-    <a href="https://packagist.org/packages/laradumps/laradumps-core">
-      <img alt="Total Downloads" src="https://img.shields.io/packagist/dt/laradumps/laradumps-core">
+    <a href="https://packagist.org/packages/laradumps/laradumps-js">
+      <img alt="Total Downloads" src="https://img.shields.io/npm/dm/laradumps-js">
     </a>
-    <a href="https://packagist.org/packages/laradumps/laradumps-core">
-      <img alt="Latest Version" src="https://img.shields.io/packagist/v/laradumps/laradumps-core">
+    <a href="https://packagist.org/packages/laradumps/laradumps-js">
+      <img alt="Latest Version" src="https://img.shields.io/npm/dm/laradumps-js">
     </a>
-    <a href="https://github.com/laradumps/laradumps-core/actions">
-        <img alt="Tests" src="https://github.com/laradumps/laradumps-core/workflows/LaraDumpsCore%20Tests/badge.svg" />
+    <a href="https://github.com/laradumps/laradumps-js/actions">
+        <img alt="Tests" src="https://github.com/laradumps/laradumps-js/workflows/Node.js%20CI/badge.svg" />
     </a>
-    <a href="https://packagist.org/packages/laradumps-core/laradumps">
-      <img alt="License" src="https://img.shields.io/github/license/laradumps/laradumps-core">
+    <a href="https://packagist.org/packages/laradumps-js/laradumps">
+      <img alt="License" src="https://img.shields.io/github/license/laradumps/laradumps-js">
     </a>
   </p>
 </div>
