@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./art/logo.png" height="128" alt="" />
+  <img src="https://raw.githubusercontent.com/laradumps/laradumps-core/refs/heads/2.x/art/logo.png" height="128" alt="" />
 </p>
 <h1 align="center">LaraDumps Js</h1>
 
