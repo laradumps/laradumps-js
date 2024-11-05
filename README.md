@@ -5,16 +5,16 @@
 
 <div align="center">
   <p align="center">
-    <a href="https://packagist.org/packages/laradumps/laradumps-js">
+    <a href="https://www.npmjs.com/package/laradumps-js">
       <img alt="Total Downloads" src="https://img.shields.io/npm/dm/laradumps-js">
     </a>
-    <a href="https://packagist.org/packages/laradumps/laradumps-js">
+    <a href="https://www.npmjs.com/package/laradumps-js">
       <img alt="Latest Version" src="https://img.shields.io/npm/v/laradumps-js">
     </a>
     <a href="https://github.com/laradumps/laradumps-js/actions">
         <img alt="Tests" src="https://github.com/laradumps/laradumps-js/workflows/Node.js%20CI/badge.svg" />
     </a>
-    <a href="https://packagist.org/packages/laradumps-js/laradumps">
+    <a href="https://www.npmjs.com/package/laradumps-js">
       <img alt="License" src="https://img.shields.io/github/license/laradumps/laradumps-js">
     </a>
   </p>
