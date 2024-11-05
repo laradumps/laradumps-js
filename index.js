@@ -1,6 +1,6 @@
 export function ds(...params) {
     const instance = {...LaraDumps}.generateIds();
-    
+
     params.forEach((param) => instance.dump(param));
 
     return instance;
@@ -16,12 +16,13 @@ export function sleep(ms) {
 
 export function configure({
     port = 9191,
-    hostName = '127.0.0.1',
-    autoInvokeApp = false,
+    host = '127.0.0.1',
+    autoInvoke = false,
 }) {
-    let server = `http://${hostName}:${port}`;
-    globalThis.CONFIG_LARADUMPS.host = server;
-    globalThis.CONFIG_LARADUMPS.autoInvokeApp = autoInvokeApp;
+    let server = `http://${host}:${port}`;
+
+    CONFIG_LARADUMPS.host = server;
+    CONFIG_LARADUMPS.autoInvokeApp = autoInvoke;
 }
 
 globalThis.ds = ds;
