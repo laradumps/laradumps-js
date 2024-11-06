@@ -39,7 +39,7 @@ var Screen_1 = __importDefault(require("./Screen"));
 var Table_1 = __importDefault(require("./Table"));
 var TimeTrack_1 = __importDefault(require("./TimeTrack"));
 var Validate_1 = __importDefault(require("./Validate"));
-var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({ instanceId: null, requestId: null, server: "http://127.0.0.1:9191/api/dumps", params: [], generateIds: function () {
+var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({ instanceId: null, requestId: null, server: "".concat(CONFIG_LARADUMPS.host, "/api/dumps"), params: [], generateIds: function () {
         this.instanceId = this.makeUUID();
         this.requestId = this.makeUUID();
         return this;
@@ -90,7 +90,7 @@ var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(_
                 "class_name": (_c = url === null || url === void 0 ? void 0 : url.pathname.split('/').pop()) !== null && _c !== void 0 ? _c : "terminal",
                 "project_path": (_d = url === null || url === void 0 ? void 0 : url.pathname.split('/').slice(0, -1).join('/')) !== null && _d !== void 0 ? _d : "terminal",
             }, "type": type }, data)).catch(function (error) {
-            console.error("Erro ao enviar o dump.:", error);
+            console.error("Error:", error);
         });
         return this;
     }, getStackTrace: function () {
