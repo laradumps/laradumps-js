@@ -48,7 +48,7 @@ export interface _LaraDumps extends _Benchmark, _Colors, _Screen, _Label, _Table
     instanceId: string | null;
     requestId: string | null;
 
-    server: string;
+    server: string | null;
     params: any[];
 
     getStackTrace(): object;

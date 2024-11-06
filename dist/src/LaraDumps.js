@@ -39,7 +39,10 @@ var Screen_1 = __importDefault(require("./Screen"));
 var Table_1 = __importDefault(require("./Table"));
 var TimeTrack_1 = __importDefault(require("./TimeTrack"));
 var Validate_1 = __importDefault(require("./Validate"));
-var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({ instanceId: null, requestId: null, server: "".concat(CONFIG_LARADUMPS.host, "/api/dumps"), params: [], generateIds: function () {
+var defaultHost = 'http://127.0.0.1:9191';
+var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({ instanceId: null, requestId: null, server: null, params: [], generateIds: function () {
+        var _a, _b;
+        this.server = "".concat((_b = (_a = globalThis.CONFIG_LARADUMPS) === null || _a === void 0 ? void 0 : _a.host) !== null && _b !== void 0 ? _b : defaultHost, "/api/dumps");
         this.instanceId = this.makeUUID();
         this.requestId = this.makeUUID();
         return this;

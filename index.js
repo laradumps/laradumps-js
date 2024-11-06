@@ -21,8 +21,8 @@ export function configure({
 }) {
     let server = `http://${host}:${port}`;
 
-    CONFIG_LARADUMPS.host = server;
-    CONFIG_LARADUMPS.autoInvokeApp = autoInvoke;
+    globalThis.CONFIG_LARADUMPS.host = server;
+    globalThis.CONFIG_LARADUMPS.autoInvokeApp = autoInvoke;
 }
 
 globalThis.ds = ds;

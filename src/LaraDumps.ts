@@ -9,13 +9,16 @@ import TimeTrack from './TimeTrack';
 import Validate from './Validate';
 import { _LaraDumps } from '../types';
 
+const defaultHost = 'http://127.0.0.1:9191';
+
 const LaraDumps: _LaraDumps = {
     instanceId: null,
     requestId: null,
-    server: `${CONFIG_LARADUMPS.host}/api/dumps`,
+    server: null,
     params: [],
 
     generateIds(): _LaraDumps {
+        this.server = `${globalThis.CONFIG_LARADUMPS?.host ?? defaultHost}/api/dumps`;
         this.instanceId = this.makeUUID();
         this.requestId = this.makeUUID();
 
