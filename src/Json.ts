@@ -13,7 +13,7 @@ export default {
                 this.sendJson(json);
             }
         } catch (error) {
-            console.warn('Laradumps: Json is not valid', json);
+            console.warn('LaraDumps: Invalid JSON format', json);
             return this;
         }
     },
