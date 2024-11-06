@@ -1,3 +1,4 @@
+import { inspect } from "util";
 import { _Json, _LaraDumps } from "../types";
 
 export default {
@@ -13,8 +14,27 @@ export default {
                 this.sendJson(json);
             }
         } catch (error) {
-            console.warn('Laradumps: Json is not valid', json);
+            this.dump(this.inspect(json));
             return this;
+        }
+    },
+
+    inspect(json: any): _LaraDumps {
+        return this.convertJSONStringToJSON(inspect(json));
+    },
+
+    convertJSONStringToJSON(object: string): object | string {
+        let formatted = object
+            .replace(/([{,]\s*)(\w+)\s*:/g, '$1"$2":')
+            .replace(/:\s*'([^']*)'/g, ': "$1"')
+            .replace(/undefined/g, 'null')
+            .replace(/\[Object\]/g, '{}')
+            .replace(/(\r\n|\n|\r)/gm, "");
+    
+        try {
+            return JSON.parse(formatted);
+        } catch (error) {
+            return object;
         }
     },
 

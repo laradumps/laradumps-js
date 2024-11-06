@@ -65,13 +65,10 @@ const LaraDumps: _LaraDumps = {
 
         const isValidJson = type === 'string' && this.isValidJson(param);
 
-        if((type === "object" && param?.prototype === undefined) || isValidJson) {
+        if(type === "object" || isValidJson) {
             this.json(param);
             return;
-        } else if (type === "object") {
-            console.info("Laradumps: Using JSON object as parameter. Please use `ds.json` if you want to send a JSON object.");
-            return;
-        }
+        } 
 
         return this.send("dump", {
             "dump": {

@@ -65,12 +65,8 @@ var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(_
     }, dump: function (param) {
         var type = typeof (param);
         var isValidJson = type === 'string' && this.isValidJson(param);
-        if ((type === "object" && (param === null || param === void 0 ? void 0 : param.prototype) === undefined) || isValidJson) {
+        if (type === "object" || isValidJson) {
             this.json(param);
-            return;
-        }
-        else if (type === "object") {
-            console.info("Laradumps: Using JSON object as parameter. Please use `ds.json` if you want to send a JSON object.");
             return;
         }
         return this.send("dump", {

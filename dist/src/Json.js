@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var util_1 = require("util");
 exports.default = {
     json: function (json) {
         try {
@@ -14,8 +15,25 @@ exports.default = {
             }
         }
         catch (error) {
-            console.warn('Laradumps: Json is not valid', json);
+            this.dump(this.inspect(json));
             return this;
+        }
+    },
+    inspect: function (json) {
+        return this.convertJSONStringToJSON((0, util_1.inspect)(json));
+    },
+    convertJSONStringToJSON: function (object) {
+        var formatted = object
+            .replace(/([{,]\s*)(\w+)\s*:/g, '$1"$2":')
+            .replace(/:\s*'([^']*)'/g, ': "$1"')
+            .replace(/undefined/g, 'null')
+            .replace(/\[Object\]/g, '{}')
+            .replace(/(\r\n|\n|\r)/gm, "");
+        try {
+            return JSON.parse(formatted);
+        }
+        catch (error) {
+            return object;
         }
     },
     isValidJson: function (json) {
