@@ -12,8 +12,7 @@ import { _LaraDumps } from '../types';
 const LaraDumps: _LaraDumps = {
     instanceId: null,
     requestId: null,
-
-    server: `http://127.0.0.1:9191/api/dumps`,
+    server: `${CONFIG_LARADUMPS.host}/api/dumps`,
     params: [],
 
     generateIds(): _LaraDumps {
@@ -100,7 +99,7 @@ const LaraDumps: _LaraDumps = {
             "type": type,
             ...data
         }).catch((error) => {
-            console.error("Erro ao enviar o dump.:", error);
+            console.error("Error:", error);
         });
 
         return this;
@@ -114,7 +113,7 @@ const LaraDumps: _LaraDumps = {
         let callerLine: string = stackLines[4];
 
         const hasAtDs = stackLines.findIndex(line => line.includes('at ds'));
-        
+
         if(stack.includes('[Alpine]')) {
             stackLines = stackLines.filter(line => line.includes('[Alpine]'));
             callerLine = stackLines[0]?.split('),')[0];
@@ -124,7 +123,7 @@ const LaraDumps: _LaraDumps = {
         }
 
         const match = callerLine?.match(/(https?:\/\/.*):(\d+):(\d+)/);
-        
+
         if (match) {
             const [_, file, line, column] = match;
 
