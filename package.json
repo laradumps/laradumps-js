@@ -26,7 +26,8 @@
     "axios": "^1.7.7",
     "ts-loader": "^9.5.1",
     "typescript": "^5.6.3",
-    "util": "^0.12.5"
+    "util": "^0.12.5",
+    "yarn": "^1.22.22"
   },
   "scripts": {
     "minify": "uglifyjs dist/index.js -c -m -o dist/laradumps.min.js",

@@ -70,7 +70,7 @@ const LaraDumps: _LaraDumps = {
         if(type === "object" || isValidJson) {
             this.json(param);
             return;
-        } 
+        }
 
         return this.send("dump", {
             "dump": {
@@ -86,20 +86,28 @@ const LaraDumps: _LaraDumps = {
         const url = trace.file ? new URL(trace.file) : null;
 
         axios.post(this.server, {
-            "id": this.instanceId,
-            "request_id": this.requestId,
-            "meta":{
-                "laradumps_version": "2.0.2.0",
-                "auto_invoke_app": globalThis.CONFIG_LARADUMPS?.autoInvokeApp
+            id: this.instanceId,
+            request_id: this.requestId,
+            meta:{
+                laradumps_version: "2.0.2.0",
+                auto_invoke_app: globalThis.CONFIG_LARADUMPS?.autoInvokeApp
             },
-            "ide_handle": {
-                "separator": "/",
-                "line": trace?.line,
-                "real_path": url?.pathname ?? "terminal",
-                "class_name": url?.pathname.split('/').pop() ?? "terminal",
-                "project_path": url?.pathname.split('/').slice(0, -1).join('/') ?? "terminal",
+            ide_handle: {
+                separator: "/",
+                line: trace?.line,
+                real_path: url?.pathname ?? "terminal",
+                class_name: url?.pathname.split('/').pop() ?? "terminal",
+                project_path: url?.pathname.split('/').slice(0, -1).join('/') ?? "terminal",
             },
-            "type": type,
+            type: type,
+            with_label: {
+                label: ""
+            },
+            to_screen: {
+                screen_name: "home",
+                raise_in: 0,
+                new_window: false,
+            },
             ...data
         }).catch((error) => {
             console.error("Error:", error);
