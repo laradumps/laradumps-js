@@ -6,7 +6,7 @@ describe('Label', () => {
         Label.label("test");
 
         expect(Label.send).toHaveBeenCalledWith("label", {
-            "label": {
+            "with_label": {
                 "label": "test"
             }
         });
