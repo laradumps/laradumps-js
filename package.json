@@ -1,6 +1,6 @@
 {
-  "name": "laradumps-js",
-  "version": "0.1.7",
+  "name": "@laradumps/laradumps-js",
+  "version": "0.1.0",
   "main": "index.js",
   "types": "index.d.ts",
   "repository": {
