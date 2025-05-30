@@ -4,7 +4,7 @@ describe('Label', function () {
         Label.send = jest.fn();
         Label.label("test");
         expect(Label.send).toHaveBeenCalledWith("label", {
-            "label": {
+            "with_label": {
                 "label": "test"
             }
         });
