@@ -33,13 +33,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var axios_1 = __importDefault(require("axios"));
 var Benchmark_1 = __importDefault(require("./Benchmark"));
 var Colors_1 = __importDefault(require("./Colors"));
+var Json_1 = __importDefault(require("./Json"));
 var Label_1 = __importDefault(require("./Label"));
 var Screen_1 = __importDefault(require("./Screen"));
 var Table_1 = __importDefault(require("./Table"));
 var TimeTrack_1 = __importDefault(require("./TimeTrack"));
 var Validate_1 = __importDefault(require("./Validate"));
 var defaultHost = 'http://127.0.0.1:9191';
-var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({ instanceId: null, requestId: null, server: null, params: [], generateIds: function () {
+var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({ instanceId: null, requestId: null, server: null, params: [], generateIds: function () {
         var _a, _b;
         this.server = "".concat((_b = (_a = globalThis.CONFIG_LARADUMPS) === null || _a === void 0 ? void 0 : _a.host) !== null && _b !== void 0 ? _b : defaultHost, "/api/dumps");
         this.instanceId = this.makeUUID();
@@ -52,7 +53,7 @@ var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(_
             d = Math.floor(d / 16);
             return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
-    } }, Colors_1.default), Screen_1.default), Label_1.default), TimeTrack_1.default), Table_1.default), Validate_1.default), Benchmark_1.default), { clear: function () {
+    } }, Colors_1.default), Screen_1.default), Label_1.default), TimeTrack_1.default), Table_1.default), Json_1.default), Validate_1.default), Benchmark_1.default), { clear: function () {
         return this.send("clear", {
             "clear": {}
         });
