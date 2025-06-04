@@ -56,7 +56,7 @@ const LaraDumps: _LaraDumps = {
 
     label(label: string): _LaraDumps {
         return this.send("label", {
-            "label": {
+            "with_label": {
                 label
             }
         });
