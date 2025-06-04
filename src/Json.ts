@@ -1,4 +1,3 @@
-import { inspect } from "util";
 import { _Json, _LaraDumps } from "../types";
 
 export default {
@@ -20,7 +19,7 @@ export default {
     },
 
     inspect(json: any): _LaraDumps {
-        return this.convertJSONStringToJSON(inspect(json));
+        return this.convertJSONStringToJSON(JSON.stringify(json, null, 2));
     },
 
     convertJSONStringToJSON(object: string): object | string {

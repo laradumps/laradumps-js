@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var util_1 = require("util");
 exports.default = {
     json: function (json) {
         try {
@@ -20,7 +19,7 @@ exports.default = {
         }
     },
     inspect: function (json) {
-        return this.convertJSONStringToJSON((0, util_1.inspect)(json));
+        return this.convertJSONStringToJSON(JSON.stringify(json, null, 2));
     },
     convertJSONStringToJSON: function (object) {
         var formatted = object

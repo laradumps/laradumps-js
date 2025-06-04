@@ -83,16 +83,22 @@ var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(_
         var _a, _b, _c, _d;
         var trace = this.getStackTrace();
         var url = trace.file ? new URL(trace.file) : null;
-        axios_1.default.post(this.server, __assign({ "id": this.instanceId, "request_id": this.requestId, "meta": {
-                "laradumps_version": "2.0.2.0",
-                "auto_invoke_app": (_a = globalThis.CONFIG_LARADUMPS) === null || _a === void 0 ? void 0 : _a.autoInvokeApp
-            }, "ide_handle": {
-                "separator": "/",
-                "line": trace === null || trace === void 0 ? void 0 : trace.line,
-                "real_path": (_b = url === null || url === void 0 ? void 0 : url.pathname) !== null && _b !== void 0 ? _b : "terminal",
-                "class_name": (_c = url === null || url === void 0 ? void 0 : url.pathname.split('/').pop()) !== null && _c !== void 0 ? _c : "terminal",
-                "project_path": (_d = url === null || url === void 0 ? void 0 : url.pathname.split('/').slice(0, -1).join('/')) !== null && _d !== void 0 ? _d : "terminal",
-            }, "type": type }, data)).catch(function (error) {
+        axios_1.default.post(this.server, __assign({ id: this.instanceId, request_id: this.requestId, meta: {
+                laradumps_version: "2.0.2.0",
+                auto_invoke_app: (_a = globalThis.CONFIG_LARADUMPS) === null || _a === void 0 ? void 0 : _a.autoInvokeApp
+            }, ide_handle: {
+                separator: "/",
+                line: trace === null || trace === void 0 ? void 0 : trace.line,
+                real_path: (_b = url === null || url === void 0 ? void 0 : url.pathname) !== null && _b !== void 0 ? _b : "terminal",
+                class_name: (_c = url === null || url === void 0 ? void 0 : url.pathname.split('/').pop()) !== null && _c !== void 0 ? _c : "terminal",
+                project_path: (_d = url === null || url === void 0 ? void 0 : url.pathname.split('/').slice(0, -1).join('/')) !== null && _d !== void 0 ? _d : "terminal",
+            }, type: type, with_label: {
+                label: ""
+            }, to_screen: {
+                screen_name: "home",
+                raise_in: 0,
+                new_window: false,
+            } }, data)).catch(function (error) {
             console.error("Error:", error);
         });
         return this;
