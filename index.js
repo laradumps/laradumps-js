@@ -17,12 +17,18 @@ export function sleep(ms) {
 export function configure({
     port = 9191,
     host = '127.0.0.1',
-    autoInvoke = false,
+    auto_invoke_app = false,
+    workdir = '',
+    wsl_config = '',
+    application_path = '',
 }) {
-    let server = `http://${host}:${port}`;
-
-    globalThis.CONFIG_LARADUMPS.host = server;
-    globalThis.CONFIG_LARADUMPS.autoInvokeApp = autoInvoke;
+    globalThis.CONFIG_LARADUMPS = {
+        host: `http://${host}:${port}`,
+        auto_invoke_app: auto_invoke_app,
+        workdir,
+        wsl_config,
+        application_path,
+    }
 }
 
 globalThis.ds = ds;
@@ -31,10 +37,14 @@ globalThis._sleep = sleep;
 
 globalThis.CONFIG_LARADUMPS = {
     host: 'http://127.0.0.1:9191',
-    autoInvokeApp: false
+    auto_invoke_app: false,
+    workdir: '/var/www/html',
+    wsl_config: 'wsl+Ubuntu/',
+    application_path: '',
 };
 
 import LaraDumps from "./src/LaraDumps";
+
 export default LaraDumps;
 
 globalThis.LaraDumps = LaraDumps;
