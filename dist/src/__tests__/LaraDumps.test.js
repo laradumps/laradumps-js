@@ -15,7 +15,7 @@ describe('LaraDumps', function () {
         LaraDumps.send = jest.fn();
         LaraDumps.label("test");
         expect(LaraDumps.send).toHaveBeenCalledWith("label", {
-            "label": {
+            "with_label": {
                 "label": "test"
             }
         });

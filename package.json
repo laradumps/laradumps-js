@@ -29,7 +29,7 @@
   },
   "scripts": {
     "minify": "uglifyjs dist/index.js -c -m -o dist/laradumps.min.js",
-    "build": "npx tsc && webpack && yarn minify"
+    "build": "webpack && yarn minify"
   },
   "devDependencies": {
     "uglify-js": "^3.19.3",

@@ -61,7 +61,7 @@ var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(_
         throw new Error("Exception to stop the execution!");
     }, label: function (label) {
         return this.send("label", {
-            "label": {
+            "with_label": {
                 label: label
             }
         });
@@ -80,25 +80,24 @@ var LaraDumps = __assign(__assign(__assign(__assign(__assign(__assign(__assign(_
             }
         });
     }, send: function (type, data) {
-        var _a, _b, _c, _d;
+        var _a, _b, _c, _d, _e, _f, _g, _h;
         var trace = this.getStackTrace();
         var url = trace.file ? new URL(trace.file) : null;
-        axios_1.default.post(this.server, __assign({ id: this.instanceId, request_id: this.requestId, meta: {
-                laradumps_version: "2.0.2.0",
-                auto_invoke_app: (_a = globalThis.CONFIG_LARADUMPS) === null || _a === void 0 ? void 0 : _a.autoInvokeApp
-            }, ide_handle: {
+        axios_1.default.post(this.server, __assign({ id: this.instanceId, request_id: this.requestId, application_path: (_b = (_a = globalThis.CONFIG_LARADUMPS) === null || _a === void 0 ? void 0 : _a.application_path) !== null && _b !== void 0 ? _b : "", auto_invoke_app: (_c = globalThis.CONFIG_LARADUMPS) === null || _c === void 0 ? void 0 : _c.auto_invoke_app, ide_handle: {
                 separator: "/",
                 line: trace === null || trace === void 0 ? void 0 : trace.line,
-                real_path: (_b = url === null || url === void 0 ? void 0 : url.pathname) !== null && _b !== void 0 ? _b : "terminal",
-                class_name: (_c = url === null || url === void 0 ? void 0 : url.pathname.split('/').pop()) !== null && _c !== void 0 ? _c : "terminal",
-                project_path: (_d = url === null || url === void 0 ? void 0 : url.pathname.split('/').slice(0, -1).join('/')) !== null && _d !== void 0 ? _d : "terminal",
+                real_path: (_d = url === null || url === void 0 ? void 0 : url.pathname) !== null && _d !== void 0 ? _d : "Browser",
+                class_name: (_e = url === null || url === void 0 ? void 0 : url.pathname.split('/').pop()) !== null && _e !== void 0 ? _e : "Browser",
+                project_path: (_f = url === null || url === void 0 ? void 0 : url.pathname.split('/').slice(0, -1).join('/')) !== null && _f !== void 0 ? _f : "Browser",
+                workdir: (_g = globalThis.CONFIG_LARADUMPS) === null || _g === void 0 ? void 0 : _g.workdir,
+                wsl_config: (_h = globalThis.CONFIG_LARADUMPS) === null || _h === void 0 ? void 0 : _h.wsl_config,
             }, type: type, with_label: {
                 label: ""
             }, to_screen: {
                 screen_name: "home",
                 raise_in: 0,
                 new_window: false,
-            } }, data)).catch(function (error) {
+            }, extra: {}, code_snippet: '' }, data)).catch(function (error) {
             console.error("Error:", error);
         });
         return this;
