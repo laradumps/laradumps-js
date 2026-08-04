@@ -22,18 +22,11 @@
   ],
   "license": "MIT",
   "private": false,
-  "dependencies": {
-    "axios": "^1.16.0",
-    "ts-loader": "^9.5.4",
-    "typescript": "^5.9.3"
-  },
   "scripts": {
-    "minify": "uglifyjs dist/index.js -c -m -o dist/laradumps.min.js",
-    "build": "webpack && yarn minify"
+    "build": "vite build"
   },
   "devDependencies": {
-    "uglify-js": "^3.19.3",
-    "webpack": "^5.96.1",
-    "webpack-cli": "^5.1.4"
+    "typescript": "^5.9.3",
+    "vite": "^8.0.0"
   }
 }

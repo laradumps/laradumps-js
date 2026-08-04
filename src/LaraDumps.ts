@@ -1,4 +1,3 @@
-import axios from 'axios';
 import Benchmark from './Benchmark';
 import Colors from './Colors';
 import Json from './Json';
@@ -85,32 +84,38 @@ const LaraDumps: _LaraDumps = {
         const trace = this.getStackTrace();
         const url = trace.file ? new URL(trace.file) : null;
 
-        axios.post(this.server, {
-            id: this.instanceId,
-            request_id: this.requestId,
-            application_path: globalThis.CONFIG_LARADUMPS?.application_path ?? "",
-            auto_invoke_app: globalThis.CONFIG_LARADUMPS?.auto_invoke_app,
-            ide_handle: {
-                separator: "/",
-                line: trace?.line,
-                real_path: url?.pathname ?? "Browser",
-                class_name: url?.pathname.split('/').pop() ?? "Browser",
-                project_path: url?.pathname.split('/').slice(0, -1).join('/') ?? "Browser",
-                workdir: globalThis.CONFIG_LARADUMPS?.workdir,
-                wsl_config: globalThis.CONFIG_LARADUMPS?.wsl_config,
+        fetch(this.server, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            type: type,
-            with_label: {
-                label: ""
-            },
-            to_screen: {
-                screen_name: "home",
-                raise_in: 0,
-                new_window: false,
-            },
-            extra: {},
-            code_snippet: '',
-            ...data
+            body: JSON.stringify({
+                id: this.instanceId,
+                request_id: this.requestId,
+                application_path: globalThis.CONFIG_LARADUMPS?.application_path ?? "",
+                auto_invoke_app: globalThis.CONFIG_LARADUMPS?.auto_invoke_app,
+                ide_handle: {
+                    separator: "/",
+                    line: trace?.line,
+                    real_path: url?.pathname ?? "Browser",
+                    class_name: url?.pathname.split('/').pop() ?? "Browser",
+                    project_path: url?.pathname.split('/').slice(0, -1).join('/') ?? "Browser",
+                    workdir: globalThis.CONFIG_LARADUMPS?.workdir,
+                    wsl_config: globalThis.CONFIG_LARADUMPS?.wsl_config,
+                },
+                type: type,
+                with_label: {
+                    label: ""
+                },
+                to_screen: {
+                    screen_name: "home",
+                    raise_in: 0,
+                    new_window: false,
+                },
+                extra: {},
+                code_snippet: '',
+                ...data
+            }),
         }).catch((error) => {
             console.error("Error:", error);
         });
